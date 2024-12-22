@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: libralink-deploiement
+  labels:
+    app: libralink
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: libralink
+  template:
+    metadata:
+      labels:
+        app: libralink
+    spec:
+      containers:
+        - name: libralink
+          image: nyambi/libralink:v1
+          ports:
+            - containerPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: libralink-services
+spec:
+  selector:
+    app: libralink
+  ports:
+      - port : 8082
+        targetPort : 8082
+        nodePort: 30009
+  type : LoadBalancer
