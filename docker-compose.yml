@@ -2,17 +2,17 @@
 version: '3.1'
 
 services:
-  gesbook:
-    container_name: Libralink
-    image: franky/gesboo:v1
+  GesSous:
+    container_name: GesSous
+    image: franky/gessous:v1
     depends_on:
       - database
     ports:
       - 8091:8090
     networks:
-      - libralink-network
+      - gessous-network
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mariadb://database:3306/libralink
+      SPRING_DATASOURCE_URL: jdbc:mariadb://database:3306/gessous
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
 
@@ -20,7 +20,7 @@ services:
     image: mariadb:11.1
     restart: always
     networks:
-      - libralink-network
+      - gessous-network
     environment:
       MARIADB_ROOT_USER: root
       MARIADB_ROOT_PASSWORD: root
@@ -34,7 +34,7 @@ services:
     image: adminer
     restart: always
     networks:
-      - libralink-network
+      - gessous-network
     ports:
       - 8082:8080
 
@@ -42,26 +42,12 @@ services:
     image: rnwood/smtp4dev:v3
     restart: always
     networks:
-      - libralink-network
+      - gessous-network
     ports:
       - 9081:80
       - 9025:25
 volumes:
   init:
 networks:
-  libralink-network :
+  gessous-network :
 
-
-#  microcontenu:
-#    container_name: blogging
-#    image: microcontenu:0.0.1-SNAPSHOT
-#    depends_on:
-#      - database
-#    ports:
-#      - 8090:8080
-#    links:
-#      - database
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:mariadb://database:3306/blogcontenue
-#      SPRING_DATASOURCE_USERNAME: root
-#      SPRING_DATASOURCE_PASSWORD: root

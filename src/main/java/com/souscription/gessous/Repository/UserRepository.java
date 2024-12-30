@@ -1,11 +1,10 @@
-package com.conversion.truconversion.Repository;
+package com.souscription.gessous.Repository;
 
-import com.conversion.truconversion.Entite.User.User;
+
+import com.souscription.gessous.Entity.User.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
-
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUsername(String username);
+public interface UserRepository extends JpaRepository<Utilisateur, Long> {
+    Utilisateur findByUsername(String username);
 
 }

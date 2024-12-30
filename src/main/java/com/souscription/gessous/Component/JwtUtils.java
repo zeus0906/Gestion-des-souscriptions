@@ -1,7 +1,6 @@
-package com.conversion.truconversion.Component;
+package com.souscription.gessous.Component;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ClaimsMutator;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
